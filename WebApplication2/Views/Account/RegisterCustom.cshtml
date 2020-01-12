@@ -1,0 +1,32 @@
+﻿@model WebApplication2.Models.RegisterViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Register";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+</head>
+<body>
+
+    @using (Html.BeginForm("RegisterCustom", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="signup-form">
+            @Html.ValidationSummary("", new { @class = "text-danger", @style = "color:red;background-color:white;" })
+            <h1>Sign Up</h1>
+            <h3 style="color:green;">
+                @ViewBag.RegisterOk
+            </h3>
+            @Html.TextBoxFor(m => m.UserName, new { @class = "txtb", @placeholder = "Full Name" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "txtb", @type = "Email", @placeholder = "Email" })
+            @Html.PasswordFor(m => m.Password, new { @class = "txtb", @type = "Password", @placeholder = "Password" })
+            <input type="submit" value="Create Account" class="signup-btn">
+        </div>
+    }
+</body>
+
+`
